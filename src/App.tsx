@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import React from "react";
 import './App.css';
+import ButtonComponent from "./components/Buttons";
+import TextComponent from "./components/Text";
+import { Layout } from "./layouts/Layout";
+
+
+
+const pages = [
+  <ButtonComponent/>, <TextComponent/>
+]
 
 function App() {
+  const [pageIndex, setPageIndex] = React.useState<number>(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout setPage={setPageIndex}>
+      {pages[pageIndex]}
+    </Layout>
   );
 }
 
